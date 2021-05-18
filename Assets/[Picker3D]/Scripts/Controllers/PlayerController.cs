@@ -28,7 +28,7 @@ public class PlayerController : Singleton<PlayerController>
     public void Slide(float _value)
     {
         _value = Mathf.Clamp(_value, -_forceLimit, _forceLimit);
-        _Rigidbody.AddForce(_value * transform.right);
+        _Rigidbody.AddForce(_value * _Rigidbody.mass / 2 * transform.right);
     }
 
     // Private Methods
