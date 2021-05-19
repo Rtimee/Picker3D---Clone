@@ -9,6 +9,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject _gameOverScreen;
     [SerializeField] private GameObject _gameplayScreen;
     [SerializeField] private Image _progressBar;
+    [SerializeField] private Text _currentLevelText;
+    [SerializeField] private Text _nextLevelText;
 
     #endregion
 
@@ -38,6 +40,11 @@ public class UIManager : Singleton<UIManager>
         _progressBar.fillAmount = _value;
     }
 
+    public void LoadGameUI(int _currentLevel)
+    {
+        _currentLevelText.text = _currentLevel.ToString();
+        _nextLevelText.text = (_currentLevel + 1).ToString();
+    }
 
     // Private Methods
 

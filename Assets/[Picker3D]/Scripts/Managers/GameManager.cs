@@ -7,9 +7,19 @@ public class GameManager : Singleton<GameManager>
 
     public bool isGameStarted;
 
+    private int _currentLevelIndex;
+
     #endregion
 
     #region MonoBehaviour Callbacks
+
+    private void Awake()
+    {
+        base.Awake();
+        GetData();
+        LevelManager.Instance.SpawnLevel(_currentLevelIndex);
+        UIManager.Instance.LoadGameUI(_currentLevelIndex + 1);
+    }
 
     private void OnEnable()
     {
@@ -45,12 +55,24 @@ public class GameManager : Singleton<GameManager>
     {
         PlayerController.Instance.StopPlayer();
         isGameStarted = false;
+        LevelUp();
     }
 
     private void GameOver()
     {
         PlayerController.Instance.StopPlayer();
         isGameStarted = false;
+    }
+
+    private void GetData()
+    {
+        _currentLevelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
+    }
+
+    private void LevelUp()
+    {
+        _currentLevelIndex++;
+        PlayerPrefs.SetInt("LevelIndex", _currentLevelIndex);
     }
 
     #endregion

@@ -13,8 +13,20 @@ public class PlayerController : Singleton<PlayerController>
     private Rigidbody _rigidBody;
     private Rigidbody _Rigidbody { get { return _rigidBody == null ? _rigidBody = GetComponent<Rigidbody>() : _rigidBody; }}
 
+    private Transform _finishLine;
+    private Transform _FinishLine { get
+        {
+            if(_finishLine == null)
+            {
+                _finishLine = FindObjectOfType<FinishLine>().transform;
+                CalculateFirstDistanceFromFinish();
+            }
+            return _finishLine;
+        }}
+
     private PlayerStates.PlayerState _myState;
     private float _initialSpeed;
+    private float _firstDistanceFromFinish;
 
     #endregion
 
@@ -29,6 +41,12 @@ public class PlayerController : Singleton<PlayerController>
     {
         if(GameManager.Instance.isGameStarted)
             MoveForward();
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.isGameStarted)
+            CalculateProgress();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -67,6 +85,19 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     // Private Methods
+
+    private void CalculateProgress()
+    {
+        float _distance = Vector3.Distance(_FinishLine.position, transform.position);
+        float _progressValue = (_firstDistanceFromFinish - _distance) / _firstDistanceFromFinish;
+
+        UIManager.Instance.FillProgressBar(_progressValue);
+    }
+
+    private void CalculateFirstDistanceFromFinish()
+    {
+        _firstDistanceFromFinish = Vector3.Distance(_FinishLine.position, transform.position);
+    }
 
     private IEnumerator CheckPlayerState()
     {
