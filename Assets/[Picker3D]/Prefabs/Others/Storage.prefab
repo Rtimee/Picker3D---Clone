@@ -125,6 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missingPart: {fileID: 9039936233407660846}
   _requireObjectCount: 0
+  _objectsParticleData: {fileID: 11400000, guid: 2d17814630cd47b41ac59042076fb3a3,
+    type: 2}
 --- !u!1 &53577321111097762
 GameObject:
   m_ObjectHideFlags: 0

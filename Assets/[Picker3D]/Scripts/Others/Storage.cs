@@ -2,6 +2,7 @@
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using System.Collections;
 
 public class Storage : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Storage : MonoBehaviour
 
     [SerializeField] private Transform _missingPart;
     [SerializeField] private int _requireObjectCount;
+    [SerializeField] private FXData _objectsParticleData;
 
     private List<Transform> _objectsInStorage;
     private List<Transform> _ObjectsInStorage { get { return _objectsInStorage == null ? _objectsInStorage = new List<Transform>() : _objectsInStorage; }}
@@ -41,18 +43,31 @@ public class Storage : MonoBehaviour
     {
         _ObjectsInStorage.Add(_target);
         UpdateText();
-
-        if (_ObjectsInStorage.Count == _requireObjectCount)
-            _missingPart.DOLocalMoveY(1.45f, .5f).OnComplete(() =>
-            {
-                PlayerController.Instance.SetWaitingState(PlayerStates.PlayerState.Moving);
-                Destroy(this);
-            });
+        StartCoroutine(ExplodeObjectsWithDelay());
     }
 
     private void UpdateText()
     {
         _RequireObjectCountText.text = _ObjectsInStorage.Count + "/" + _requireObjectCount;
+    }
+
+    private IEnumerator ExplodeObjectsWithDelay()
+    {
+        if (_ObjectsInStorage.Count == _requireObjectCount)
+        {
+            for (int i = 0; i < _ObjectsInStorage.Count; i++)
+            {
+                yield return new WaitForSeconds(.2f);
+                GameObject currentObject = _ObjectsInStorage[i].gameObject;
+                _objectsParticleData.myFxPool.GetObjFromPool(currentObject.transform.position);
+                Destroy(currentObject);
+            }
+            _missingPart.DOLocalMoveY(1.45f, 1.5f).SetEase(Ease.InOutBack).OnComplete(() =>
+            {
+                PlayerController.Instance.SetWaitingState(PlayerStates.PlayerState.Moving);
+                Destroy(this);
+            });
+        }
     }
 
     #endregion
