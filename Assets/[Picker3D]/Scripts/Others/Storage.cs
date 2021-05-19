@@ -22,6 +22,11 @@ public class Storage : MonoBehaviour
 
     #region MonoBehaviour Callbacks
 
+    private void Awake()
+    {
+        _missingPart.DOLocalMoveY(-1.5f, 0);
+    }
+
     private void Start()
     {
         UpdateText();
