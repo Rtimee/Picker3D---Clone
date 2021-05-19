@@ -24,7 +24,8 @@ public class PlayerController : Singleton<PlayerController>
 
     private void FixedUpdate()
     {
-        MoveForward();
+        if(GameManager.Instance.isGameStarted)
+            MoveForward();
     }
 
     private void OnTriggerEnter(Collider other)
