@@ -47,6 +47,11 @@ public class ObjectDetector : Singleton<ObjectDetector>
         _MyObjects.Clear();
     }
 
+    public bool CheckHaveEnoughObjects(int _count)
+    {
+        return _MyObjects.Count >= _count;
+    }
+
     // Private Methods
 
     private void AddToList(Rigidbody _obj)

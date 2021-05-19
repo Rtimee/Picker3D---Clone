@@ -44,6 +44,15 @@ public class Storage : MonoBehaviour
 
     #region Other Methods
 
+    // Public Methods
+
+    public int GetRequireObjectCount()
+    {
+        return _requireObjectCount;
+    }
+
+    // Private Methods
+
     private void AddToStorage(Transform _target)
     {
         _ObjectsInStorage.Add(_target);

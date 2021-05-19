@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
 {
     #region Variables
+
+    [HideInInspector] public bool canPass;
 
     [SerializeField] private float _playerSpeed;
     [SerializeField] private float _forceLimit;
@@ -32,8 +35,11 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (other.CompareTag("Storage_Trigger"))
         {
-            Destroy(other.gameObject);
             SetWaitingState(PlayerStates.PlayerState.Waiting);
+            var storage = other.GetComponentInParent<Storage>();
+            canPass = ObjectDetector.Instance.CheckHaveEnoughObjects(storage.GetRequireObjectCount());
+            StartCoroutine(CheckPlayerState());
+            Destroy(other.gameObject);
         }
     }
 
@@ -56,6 +62,13 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     // Private Methods
+
+    private IEnumerator CheckPlayerState()
+    {
+        yield return new WaitForSeconds(2f);
+        if (!canPass)
+            EventManager.OnGameOver.Invoke();
+    }
 
     private void MoveForward()
     {

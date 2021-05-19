@@ -12,23 +12,30 @@ public class GameManager : Singleton<GameManager>
 
     private void OnEnable()
     {
-        EventManager.OnGameOver.AddListener(EndOfLevel);
-        EventManager.OnLevelPassed.AddListener(EndOfLevel);
+        EventManager.OnGameOver.AddListener(GameOver);
+        EventManager.OnLevelPassed.AddListener(LevelClear);
     }
 
     private void OnDisable()
     {
-        EventManager.OnGameOver.RemoveListener(EndOfLevel);
-        EventManager.OnLevelPassed.RemoveListener(EndOfLevel);
+        EventManager.OnGameOver.RemoveListener(GameOver);
+        EventManager.OnLevelPassed.RemoveListener(LevelClear);
     }
 
     #endregion
 
     #region Other Methods
 
-    private void EndOfLevel()
+    private void LevelClear()
     {
         isGameStarted = false;
+        Debug.Log("Level Clear");
+    }
+
+    private void GameOver()
+    {
+        isGameStarted = false;
+        Debug.Log("Game Over");
     }
 
     #endregion

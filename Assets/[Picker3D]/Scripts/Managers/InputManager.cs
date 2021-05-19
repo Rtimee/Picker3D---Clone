@@ -18,7 +18,8 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        ControllInput();
+        if(GameManager.Instance.isGameStarted)
+            ControllInput();
     }
 
     #endregion

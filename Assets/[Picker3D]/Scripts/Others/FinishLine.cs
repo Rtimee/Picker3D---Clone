@@ -28,7 +28,7 @@ public class FinishLine : MonoBehaviour
 
     private void LevelPassed()
     {
-        Debug.Log("Level Cleared");
+        
     }
 
     #endregion
