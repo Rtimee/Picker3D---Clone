@@ -61,6 +61,11 @@ public class PlayerController : Singleton<PlayerController>
         UpdatePlayerState();
     }
 
+    public void StopPlayer()
+    {
+        _Rigidbody.velocity = Vector3.zero;
+    }
+
     // Private Methods
 
     private IEnumerator CheckPlayerState()

@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     #region Variables
 
-    [HideInInspector] public bool isGameStarted = true;
+    public bool isGameStarted;
 
     #endregion
 
@@ -26,16 +27,30 @@ public class GameManager : Singleton<GameManager>
 
     #region Other Methods
 
+    // Public Methods
+
+    public void StartGameButton()
+    {
+        isGameStarted = true;
+    }
+
+    public void LoadScene()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
+
+    // Private Methods
+
     private void LevelClear()
     {
+        PlayerController.Instance.StopPlayer();
         isGameStarted = false;
-        Debug.Log("Level Clear");
     }
 
     private void GameOver()
     {
+        PlayerController.Instance.StopPlayer();
         isGameStarted = false;
-        Debug.Log("Game Over");
     }
 
     #endregion
