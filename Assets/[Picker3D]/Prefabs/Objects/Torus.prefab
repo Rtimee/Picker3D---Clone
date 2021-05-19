@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3639134775858846602}
   - component: {fileID: 5504967308280735978}
   - component: {fileID: 1287652495973363}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Torus
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!64 &1287652495973363
 MeshCollider:
   m_ObjectHideFlags: 0

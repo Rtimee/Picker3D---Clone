@@ -39,7 +39,10 @@ public class ObjectDetector : Singleton<ObjectDetector>
     public void PushAllObjects()
     {
         for (int i = 0; i < _MyObjects.Count; i++)
+        {
+            _MyObjects[i].gameObject.layer = 9;
             _MyObjects[i].AddForce(Vector3.forward * _pushForce);
+        }
     }
 
     public void ClearList()

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4778871444745410754}
   - component: {fileID: 3795050542881763662}
   - component: {fileID: 549236396951779478}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -108,4 +108,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2

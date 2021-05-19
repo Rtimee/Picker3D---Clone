@@ -71,7 +71,7 @@ public class Storage : MonoBehaviour
         {
             for (int i = 0; i < _ObjectsInStorage.Count; i++)
             {
-                yield return new WaitForSeconds(.2f);
+                yield return new WaitForSeconds(.1f);
                 GameObject currentObject = _ObjectsInStorage[i].gameObject;
                 _objectsParticleData.myFxPool.GetObjFromPool(currentObject.transform.position);
                 Destroy(currentObject);
