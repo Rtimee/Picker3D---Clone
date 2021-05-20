@@ -9,6 +9,8 @@ public class Storage : MonoBehaviour
     #region Variables
 
     [SerializeField] private Transform _missingPart;
+    [SerializeField] private Transform[] _barrierParts;
+    [SerializeField] private GameObject _barrierFx;
     [SerializeField] private int _requireObjectCount;
     [SerializeField] private FXData _objectsParticleData;
 
@@ -78,10 +80,19 @@ public class Storage : MonoBehaviour
             }
             _missingPart.DOLocalMoveY(1.45f, 1.5f).SetEase(Ease.InOutBack).OnComplete(() =>
             {
+                OpenBarrier();
+            });
+        }
+    }
+
+    private void OpenBarrier()
+    {
+        for (int i = 0; i < _barrierParts.Length; i++)
+            _barrierParts[i].DOLocalRotate(_barrierParts[i].transform.forward * (-60 * (-i == 0 ? 1 : - 1)), 1f).OnComplete(() => {
+                _barrierFx.SetActive(true);
                 PlayerController.Instance.SetWaitingState(PlayerStates.PlayerState.Moving);
                 Destroy(this);
             });
-        }
     }
 
     #endregion

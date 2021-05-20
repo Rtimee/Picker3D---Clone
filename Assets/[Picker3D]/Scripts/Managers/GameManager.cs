@@ -53,14 +53,12 @@ public class GameManager : Singleton<GameManager>
 
     private void LevelClear()
     {
-        PlayerController.Instance.StopPlayer();
         isGameStarted = false;
         LevelUp();
     }
 
     private void GameOver()
     {
-        PlayerController.Instance.StopPlayer();
         isGameStarted = false;
     }
 

@@ -1,34 +1,34 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class FinishLine : MonoBehaviour
 {
+    #region Variables
+
+    [SerializeField] private GameObject _finishFx;
+
+    #endregion
+
     #region MonoBehaviour Callbacks
-
-    private void OnEnable()
-    {
-        EventManager.OnLevelPassed.AddListener(LevelPassed);
-    }
-
-    private void OnDisable()
-    {
-        EventManager.OnLevelPassed.RemoveListener(LevelPassed);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<ObjectDetector>();
 
         if (player != null)
-            EventManager.OnLevelPassed.Invoke();
+            StartCoroutine(LevelPassed());
     }
 
     #endregion
 
     #region Other Methods
 
-    private void LevelPassed()
+    private IEnumerator LevelPassed()
     {
-        
+        PlayerController.Instance.SetWaitingState(PlayerStates.PlayerState.Waiting);
+        _finishFx.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        EventManager.OnLevelPassed.Invoke();
     }
 
     #endregion
