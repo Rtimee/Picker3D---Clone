@@ -96,7 +96,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private IEnumerator CheckPlayerState()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         if (!canPass)
             EventManager.OnGameOver.Invoke();
     }

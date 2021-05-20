@@ -74,6 +74,7 @@ public class Storage : MonoBehaviour
     {
         if (_ObjectsInStorage.Count == _requireObjectCount)
         {
+            PlayerController.Instance.canPass = true;
             for (int i = 0; i < _ObjectsInStorage.Count; i++)
             {
                 yield return new WaitForSeconds(.05f);
@@ -95,6 +96,7 @@ public class Storage : MonoBehaviour
             _barrierParts[i].DOLocalRotate(_barrierParts[i].transform.forward * (-60 * (-i == 0 ? 1 : - 1)), 1f).OnComplete(() => {
                 _barrierFx.SetActive(true);
                 PlayerController.Instance.SetWaitingState(PlayerStates.PlayerState.Moving);
+                _missingPart.SetParent(null);
                 Destroy(this);
             });
     }

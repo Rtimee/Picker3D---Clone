@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109110f7daf976041bf24527929077c1, type: 3}
+  m_Name: Level 7
+  m_EditorClassIdentifier: 
+  levelPrefab: {fileID: 3266781380578888362, guid: 78cd250b86551754f95749dbc33fe846,
+    type: 3}
+  groundMaterial: {fileID: 2100000, guid: 90e07441d51a2c847aaa665eb2aee80b, type: 2}

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109110f7daf976041bf24527929077c1, type: 3}
+  m_Name: Level 8
+  m_EditorClassIdentifier: 
+  levelPrefab: {fileID: 7285329517750496823, guid: 2a8278e315b1b3444b67c29b17ff2a68,
+    type: 3}
+  groundMaterial: {fileID: 2100000, guid: db4631e6f6260584ea6bb8bb7be07b32, type: 2}
