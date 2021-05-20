@@ -863,6 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16961e07a8eda9640a70a4eddafd04a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finishLine: {fileID: 0}
   _levelDatas:
   - {fileID: 11400000, guid: b9c25ca3c9c8e184592b197b185eb2ab, type: 2}
   - {fileID: 11400000, guid: 5de0e94f2e1dd95479aeeac4b929e7a5, type: 2}
@@ -2697,8 +2698,8 @@ GameObject:
   - component: {fileID: 854213256}
   - component: {fileID: 854213260}
   - component: {fileID: 854213259}
-  - component: {fileID: 854213257}
   - component: {fileID: 854213258}
+  - component: {fileID: 854213257}
   m_Layer: 0
   m_Name: Object_Detector
   m_TagString: Untagged

@@ -18,7 +18,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             if(_finishLine == null)
             {
-                _finishLine = FindObjectOfType<FinishLine>().transform;
+                _finishLine = LevelManager.Instance.finishLine;
                 CalculateFirstDistanceFromFinish();
             }
             return _finishLine;

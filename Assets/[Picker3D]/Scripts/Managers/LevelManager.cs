@@ -4,9 +4,27 @@ public class LevelManager : Singleton<LevelManager>
 {
     #region Variables
 
+    [HideInInspector] public Transform finishLine;
+
     [SerializeField] private LevelData[] _levelDatas;
 
     private LevelData _currentLevelData;
+    private LevelData _nextLevelData;
+
+    private PlatformGenerator _platformGenerator;
+    private PlatformGenerator _PlatformGenerator { get { return _platformGenerator == null ? _platformGenerator = FindObjectOfType<PlatformGenerator>() : _platformGenerator; }}
+
+    private int _isLevelPassed;
+    private int _IsLevelPassed { get { return PlayerPrefs.HasKey("LevelPassed") ? PlayerPrefs.GetInt("LevelPassed") : 0; }}
+
+    #endregion
+
+    #region MonoBehaviour Callback
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("LevelPassed", 0);
+    }
 
     #endregion
 
@@ -14,14 +32,31 @@ public class LevelManager : Singleton<LevelManager>
 
     // Public Methods
 
-    public void SpawnLevel(int index)
+    public void SpawnLevel(int _index, int _nextLevelIndex)
     {
-        if (index > _levelDatas.Length - 1)
-            index = GetRandomLevel();
+        if (_index >= _levelDatas.Length - 1)
+        {
+            if (_IsLevelPassed == 1)
+            {
+                _index = _nextLevelIndex;
+                _nextLevelIndex = GetRandomLevel(_index);
+            }
+            else
+                _index = PlayerPrefs.GetInt("LevelIndex");
+        }
+        else
+            _nextLevelIndex = _index + 1;
 
-        _currentLevelData = _levelDatas[index];
+        _currentLevelData = _levelDatas[_index];
+        _nextLevelData = _levelDatas[_nextLevelIndex];
+
         Instantiate(_currentLevelData.levelPrefab);
-        PlayerPrefs.SetInt("LevelIndex", index);
+        finishLine = FindObjectOfType<FinishLine>().transform;
+        Instantiate(_nextLevelData.levelPrefab, _PlatformGenerator.transform);
+
+        Debug.Log(_nextLevelIndex + 1);
+        PlayerPrefs.SetInt("LevelIndex", _index);
+        PlayerPrefs.SetInt("NextLevelIndex", _nextLevelIndex);
     }
 
     public Material GetLevelMaterial()
@@ -31,15 +66,14 @@ public class LevelManager : Singleton<LevelManager>
 
     // Private Methods
 
-    private int GetRandomLevel()
+    private int GetRandomLevel(int _indexValue)
     {
-        int index = Random.Range(0, _levelDatas.Length);
+        int _index = Random.Range(0, _levelDatas.Length);
 
-        int lastLevel = PlayerPrefs.GetInt("LevelIndex");
-        if (index == lastLevel)
-            return GetRandomLevel();
+        if (_index == _indexValue )
+            return GetRandomLevel(_indexValue);
         else
-            return index;
+            return _index;
     }
 
     #endregion

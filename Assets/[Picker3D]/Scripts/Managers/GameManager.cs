@@ -8,6 +8,8 @@ public class GameManager : Singleton<GameManager>
     public bool isGameStarted;
 
     private int _currentLevelIndex;
+    private int _nextLevelIndex;
+    private int _totalLevelIndex;
 
     #endregion
 
@@ -17,8 +19,8 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         GetData();
-        LevelManager.Instance.SpawnLevel(_currentLevelIndex);
-        UIManager.Instance.LoadGameUI(_currentLevelIndex + 1);
+        LevelManager.Instance.SpawnLevel(_totalLevelIndex, _nextLevelIndex);
+        UIManager.Instance.LoadGameUI(_totalLevelIndex + 1);
     }
 
     private void OnEnable()
@@ -60,17 +62,23 @@ public class GameManager : Singleton<GameManager>
     private void GameOver()
     {
         isGameStarted = false;
+        PlayerPrefs.SetInt("LevelPassed", 0);
     }
 
     private void GetData()
     {
         _currentLevelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
+        _totalLevelIndex = PlayerPrefs.GetInt("TotalLevelIndex",0);
+        _nextLevelIndex = PlayerPrefs.GetInt("NextLevelIndex", 0);
     }
 
     private void LevelUp()
     {
         _currentLevelIndex++;
+        _totalLevelIndex++;
         PlayerPrefs.SetInt("LevelIndex", _currentLevelIndex);
+        PlayerPrefs.SetInt("TotalLevelIndex", _totalLevelIndex);
+        PlayerPrefs.SetInt("LevelPassed", 1);
     }
 
     #endregion
