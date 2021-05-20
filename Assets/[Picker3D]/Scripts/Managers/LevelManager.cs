@@ -12,6 +12,8 @@ public class LevelManager : Singleton<LevelManager>
 
     #region Other Methods
 
+    // Public Methods
+
     public void SpawnLevel(int index)
     {
         if (index > _levelDatas.Length - 1)
@@ -22,7 +24,14 @@ public class LevelManager : Singleton<LevelManager>
         PlayerPrefs.SetInt("LevelIndex", index);
     }
 
-    int GetRandomLevel()
+    public Material GetLevelMaterial()
+    {
+        return _currentLevelData.groundMaterial;
+    }
+
+    // Private Methods
+
+    private int GetRandomLevel()
     {
         int index = Random.Range(0, _levelDatas.Length);
 

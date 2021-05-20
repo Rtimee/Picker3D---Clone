@@ -4,4 +4,5 @@
 public class LevelData : ScriptableObject
 {
     public GameObject levelPrefab;
+    public Material groundMaterial;
 }

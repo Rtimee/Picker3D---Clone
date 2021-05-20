@@ -20,6 +20,9 @@ public class Storage : MonoBehaviour
     private TextMeshPro _requireObjectCountText;
     private TextMeshPro _RequireObjectCountText { get { return _requireObjectCountText == null ? _requireObjectCountText = GetComponentInChildren<TextMeshPro>() : _requireObjectCountText; }}
 
+    private Material _missingPartMaterial;
+    private Material _MissingPartMaterial { get { return _missingPartMaterial == null ? _missingPartMaterial = _missingPart.GetComponent<MeshRenderer>().material : _missingPartMaterial; }}
+
     #endregion
 
     #region MonoBehaviour Callbacks
@@ -73,7 +76,7 @@ public class Storage : MonoBehaviour
         {
             for (int i = 0; i < _ObjectsInStorage.Count; i++)
             {
-                yield return new WaitForSeconds(.1f);
+                yield return new WaitForSeconds(.05f);
                 GameObject currentObject = _ObjectsInStorage[i].gameObject;
                 _objectsParticleData.myFxPool.GetObjFromPool(currentObject.transform.position);
                 Destroy(currentObject);
@@ -81,6 +84,7 @@ public class Storage : MonoBehaviour
             _missingPart.DOLocalMoveY(1.45f, 1.5f).SetEase(Ease.InOutBack).OnComplete(() =>
             {
                 OpenBarrier();
+                _MissingPartMaterial.DOColor(LevelManager.Instance.GetLevelMaterial().color, 1f);
             });
         }
     }
