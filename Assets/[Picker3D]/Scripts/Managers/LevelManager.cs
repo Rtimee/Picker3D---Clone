@@ -13,8 +13,6 @@ public class LevelManager : Singleton<LevelManager>
 
     private PlatformGenerator _platformGenerator;
     private PlatformGenerator _PlatformGenerator { get { return _platformGenerator == null ? _platformGenerator = FindObjectOfType<PlatformGenerator>() : _platformGenerator; }}
-
-    private int _isLevelPassed;
     private int _IsLevelPassed { get { return PlayerPrefs.HasKey("LevelPassed") ? PlayerPrefs.GetInt("LevelPassed") : 0; }}
 
     #endregion

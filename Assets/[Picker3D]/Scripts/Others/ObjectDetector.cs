@@ -10,6 +10,9 @@ public class ObjectDetector : Singleton<ObjectDetector>
     private List<Rigidbody> _myObjects;
     private List<Rigidbody> _MyObjects { get { return _myObjects == null ? _myObjects = new List<Rigidbody>() : _myObjects; }}
 
+    private MeshCollider _meshCollider;
+    private MeshCollider _MeshCollider { get { return _meshCollider == null ? _meshCollider = GetComponent<MeshCollider>() : _meshCollider; }}
+
     #endregion
 
     #region MonoBehaviour Callbacks
@@ -38,6 +41,7 @@ public class ObjectDetector : Singleton<ObjectDetector>
 
     public void PushAllObjects()
     {
+        _MeshCollider.enabled = false;
         for (int i = 0; i < _MyObjects.Count; i++)
         {
             _MyObjects[i].gameObject.layer = 9;
@@ -48,6 +52,7 @@ public class ObjectDetector : Singleton<ObjectDetector>
     public void ClearList()
     {
         _MyObjects.Clear();
+        _MeshCollider.enabled = true;
     }
 
     public bool CheckHaveEnoughObjects(int _count)

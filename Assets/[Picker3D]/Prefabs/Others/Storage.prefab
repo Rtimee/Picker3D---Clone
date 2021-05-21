@@ -124,14 +124,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80f16a39aec04d40b5cbfd7efe5921d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _missingPart: {fileID: 9039936233407660846}
+  _playformPart: {fileID: 9039936233407660846}
   _barrierParts:
   - {fileID: 2436305038337499366}
   - {fileID: 1529862163584021591}
   _barrierFx: {fileID: 4110114426540660434}
-  _requireObjectCount: 0
   _objectsParticleData: {fileID: 11400000, guid: 2d17814630cd47b41ac59042076fb3a3,
     type: 2}
+  _requireObjectCount: 0
 --- !u!1 &53577321111097762
 GameObject:
   m_ObjectHideFlags: 0

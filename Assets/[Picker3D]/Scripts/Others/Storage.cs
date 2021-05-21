@@ -8,11 +8,11 @@ public class Storage : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] private Transform _missingPart;
+    [SerializeField] private Transform _playformPart;
     [SerializeField] private Transform[] _barrierParts;
     [SerializeField] private GameObject _barrierFx;
-    [SerializeField] private int _requireObjectCount;
     [SerializeField] private FXData _objectsParticleData;
+    [SerializeField] private int _requireObjectCount;
 
     private List<Transform> _objectsInStorage;
     private List<Transform> _ObjectsInStorage { get { return _objectsInStorage == null ? _objectsInStorage = new List<Transform>() : _objectsInStorage; }}
@@ -20,8 +20,8 @@ public class Storage : MonoBehaviour
     private TextMeshPro _requireObjectCountText;
     private TextMeshPro _RequireObjectCountText { get { return _requireObjectCountText == null ? _requireObjectCountText = GetComponentInChildren<TextMeshPro>() : _requireObjectCountText; }}
 
-    private Material _missingPartMaterial;
-    private Material _MissingPartMaterial { get { return _missingPartMaterial == null ? _missingPartMaterial = _missingPart.GetComponent<MeshRenderer>().material : _missingPartMaterial; }}
+    private Material _platformPartMaterial;
+    private Material _PlatformPartMaterial { get { return _platformPartMaterial == null ? _platformPartMaterial = _playformPart.GetComponent<MeshRenderer>().material : _platformPartMaterial; }}
 
     #endregion
 
@@ -29,7 +29,7 @@ public class Storage : MonoBehaviour
 
     private void Awake()
     {
-        _missingPart.DOLocalMoveY(-1.5f, 0);
+        _playformPart.DOLocalMoveY(-1.5f, 0);
     }
 
     private void Start()
@@ -82,10 +82,10 @@ public class Storage : MonoBehaviour
                 _objectsParticleData.myFxPool.GetObjFromPool(currentObject.transform.position);
                 Destroy(currentObject);
             }
-            _missingPart.DOLocalMoveY(1.45f, 1.5f).SetEase(Ease.InOutBack).OnComplete(() =>
+            _playformPart.DOLocalMoveY(1.45f, 1.5f).SetEase(Ease.InOutBack).OnComplete(() =>
             {
                 OpenBarrier();
-                _MissingPartMaterial.DOColor(LevelManager.Instance.GetLevelMaterial().color, 1f);
+                _PlatformPartMaterial.DOColor(LevelManager.Instance.GetLevelMaterial().color, 1f);
             });
         }
     }
@@ -96,7 +96,7 @@ public class Storage : MonoBehaviour
             _barrierParts[i].DOLocalRotate(_barrierParts[i].transform.forward * (-60 * (-i == 0 ? 1 : - 1)), 1f).OnComplete(() => {
                 _barrierFx.SetActive(true);
                 PlayerController.Instance.SetWaitingState(PlayerStates.PlayerState.Moving);
-                _missingPart.SetParent(null);
+                _playformPart.SetParent(null);
                 Destroy(this);
             });
     }

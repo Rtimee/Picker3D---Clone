@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
+// Referance script
 public class PlatformGenerator : MonoBehaviour
-{
-
-}
+{}
