@@ -41,7 +41,7 @@ public class Storage : MonoBehaviour
     {
         var _obj = collision.transform;
 
-        if (_obj.CompareTag("Object") && !_ObjectsInStorage.Contains(_obj))
+        if (_obj.CompareTag("Object") && !_ObjectsInStorage.Contains(_obj) && GameManager.Instance.isGameStarted)
             AddToStorage(_obj);
     }
 

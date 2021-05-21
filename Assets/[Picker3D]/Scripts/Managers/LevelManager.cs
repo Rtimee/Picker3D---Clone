@@ -54,7 +54,6 @@ public class LevelManager : Singleton<LevelManager>
         finishLine = FindObjectOfType<FinishLine>().transform;
         Instantiate(_nextLevelData.levelPrefab, _PlatformGenerator.transform);
 
-        Debug.Log(_nextLevelIndex + 1);
         PlayerPrefs.SetInt("LevelIndex", _index);
         PlayerPrefs.SetInt("NextLevelIndex", _nextLevelIndex);
     }
