@@ -83,7 +83,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private void CalculateProgress()
     {
-        float _distance = Vector3.Distance(_FinishLine.position, transform.position);
+        float _distance = Mathf.Abs(_FinishLine.position.z - transform.position.z);
         float _progressValue = (_firstDistanceFromFinish - _distance) / _firstDistanceFromFinish;
 
         UIManager.Instance.FillProgressBar(_progressValue);
@@ -91,7 +91,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private void CalculateFirstDistanceFromFinish()
     {
-        _firstDistanceFromFinish = Vector3.Distance(_FinishLine.position, transform.position);
+        _firstDistanceFromFinish = Mathf.Abs(_FinishLine.position.z - transform.position.z);
     }
 
     private IEnumerator CheckPlayerState()

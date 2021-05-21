@@ -5,7 +5,9 @@ public class GameManager : Singleton<GameManager>
 {
     #region Variables
 
-    public bool isGameStarted;
+    [HideInInspector] public bool isGameStarted;
+
+    [SerializeField] private GameObject _startTutorialObject;
 
     private int _currentLevelIndex;
     private int _nextLevelIndex;
@@ -19,8 +21,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         GetData();
-        LevelManager.Instance.SpawnLevel(_totalLevelIndex, _nextLevelIndex);
-        UIManager.Instance.LoadGameUI(_totalLevelIndex + 1);
+        LoadLevel();
     }
 
     private void OnEnable()
@@ -44,6 +45,8 @@ public class GameManager : Singleton<GameManager>
     public void StartGameButton()
     {
         isGameStarted = true;
+        if (_totalLevelIndex == 0)
+            _startTutorialObject.SetActive(true);
     }
 
     public void LoadScene()
@@ -79,6 +82,12 @@ public class GameManager : Singleton<GameManager>
         PlayerPrefs.SetInt("LevelIndex", _currentLevelIndex);
         PlayerPrefs.SetInt("TotalLevelIndex", _totalLevelIndex);
         PlayerPrefs.SetInt("LevelPassed", 1);
+    }
+
+    private void LoadLevel()
+    {
+        LevelManager.Instance.SpawnLevel(_totalLevelIndex, _nextLevelIndex);
+        UIManager.Instance.LoadGameUI(_totalLevelIndex + 1);
     }
 
     #endregion

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
@@ -9,8 +10,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject _gameOverScreen;
     [SerializeField] private GameObject _gameplayScreen;
     [SerializeField] private Image _progressBar;
-    [SerializeField] private Text _currentLevelText;
-    [SerializeField] private Text _nextLevelText;
+    [SerializeField] private TextMeshProUGUI _currentLevelText;
+    [SerializeField] private TextMeshProUGUI _nextLevelText;
 
     #endregion
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c8ffa9f71878cf0468724bdd4647b4d6
+guid: 625ec4e91deb6fe45845c0ccbc119d2d
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: PT Sans
+  fontName: Kids Magazine
   fontNames:
-  - PT Sans
+  - Kids Magazine
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

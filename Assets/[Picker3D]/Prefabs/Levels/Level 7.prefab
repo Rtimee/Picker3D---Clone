@@ -277,7 +277,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.237082, y: 13, z: 1.6175487}
-  m_Center: {x: 0, y: 0, z: 3}
+  m_Center: {x: 0, y: 0, z: 4}
 --- !u!114 &1366086829158652991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14311,6 +14311,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cone
       objectReference: {fileID: 0}
+    - target: {fileID: 2067315242015895506, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178534352845861648, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6589969567809560570, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14329,7 +14339,7 @@ PrefabInstance:
     - target: {fileID: 8806814762738006071, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
       propertyPath: _requireObjectCount
-      value: 25
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9039936233407660846, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
@@ -34451,6 +34461,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cone
       objectReference: {fileID: 0}
+    - target: {fileID: 2067315242015895506, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178534352845861648, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6589969567809560570, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -34469,7 +34489,7 @@ PrefabInstance:
     - target: {fileID: 8806814762738006071, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
       propertyPath: _requireObjectCount
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 9039936233407660846, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
@@ -34657,6 +34677,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cone
       objectReference: {fileID: 0}
+    - target: {fileID: 2067315242015895506, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178534352845861648, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6589969567809560570, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -34771,6 +34801,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cone
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067315242015895506, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178534352845861648, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6589969567809560570, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
@@ -34887,12 +34927,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cone
       objectReference: {fileID: 0}
+    - target: {fileID: 2067315242015895506, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5173164279670023470, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 806508559958588083, guid: 484d7fb6789275b48b00962dfc5f33f9,
+      objectReference: {fileID: 3283719261541644703, guid: 9228bf059a7d66d48a9713eac7a49cdf,
         type: 2}
+    - target: {fileID: 6178534352845861648, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6589969567809560570, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -35008,6 +35058,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cone
       objectReference: {fileID: 0}
+    - target: {fileID: 2067315242015895506, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178534352845861648, guid: 1994ddb01402709418843a58fc9be70f,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6589969567809560570, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -35026,7 +35086,7 @@ PrefabInstance:
     - target: {fileID: 8806814762738006071, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
       propertyPath: _requireObjectCount
-      value: 27
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 9039936233407660846, guid: 1994ddb01402709418843a58fc9be70f,
         type: 3}
